@@ -79,12 +79,34 @@ const winningsArrays = [
 
 function checkBoard() {
     for (let y = 0; y < winningsArrays.length; y++){ //loop over every array as a whole i.e., [13, 20, 27, 34], 
-}       const square1 = squares[winningArrays[y][0]] //go into winningArray and grab first item, here 0 from first line above
+        const square1 = squares[winningArrays[y][0]] //go into winningArray and grab first item, here 0 from first line above
+        const square2 = sqaures[winningsArrays[y][1]]//go into winningArray and grab second item, here 1 from first line above
+        const square3 = squares[winningArrays[y][2]] 
+        const square4 = sqaures[winningsArrays[y][3]]
+//check those squares to see if they all have the class of player-one
+    if (
+        square1.classList.contains('player-one') &&
+        square2.classList.contains('player-one') &&
+        square3.classList.contains('player-one') &&
+        square4.classList.contains('player-one')
+    ){
+        result.innerHTML = 'Player 1 wins'
+    }
 
-for (let i = 0; i < squares.length; i++) { //for loop to get all squares on click
+    if (
+        square1.classList.contains('player-two') &&
+        square2.classList.contains('player-two') &&
+        square3.classList.contains('player-two') &&
+        square4.classList.contains('player-two')
+    ){
+        result.innerHTML =  'Player 2 wins'
+        }
+    }
+}
+        for (let i = 0; i < squares.length; i++) { //for loop to get all squares on click
     squares[i].onclick = () => {
         //if the square below your current square is taken, you can go on top of it
-        if (squares[i + 7].classList.contains('taken')){ //current square plus 7 directly following, i.e. the entire rwo below
+        if (squares[i + 7].classList.contains('taken') &&!squares[i].classList.contains('taken')){ //current square plus 7 directly following, i.e. the entire row below && add player only if space is not currently taken
             if (currentPlayer == 1) {
                 squares[i].classList.add('taken')//add taken class
                 squares[i].classList.add('player-one')//add player-one as s/he is currently playing
