@@ -1,11 +1,10 @@
-document.addEventListener('DOMContentLoaded', () =>
-{
+document.addEventListener('DOMContentLoaded', () =>{
 const squares = document.querySelectorAll('.grid div')
 const result = document.querySelector('#result')
 const displayCurrentPlayer = document.querySelector('#current-player')
 let currentPlayer = 1
 
-const winningsArrays = [
+const winningArrays = [
     [0, 1, 2, 3],
     [41, 40, 39, 38],
     [7, 8, 9, 10],
@@ -78,11 +77,11 @@ const winningsArrays = [
 ]
 
 function checkBoard() {
-    for (let y = 0; y < winningsArrays.length; y++){ //loop over every array as a whole i.e., [13, 20, 27, 34], 
+    for (let y = 0; y < winningArrays.length; y++){ //loop over every array as a whole i.e., [13, 20, 27, 34], 
         const square1 = squares[winningArrays[y][0]] //go into winningArray and grab first item, here 0 from first line above
-        const square2 = sqaures[winningsArrays[y][1]]//go into winningArray and grab second item, here 1 from first line above
+        const square2 = squares[winningArrays[y][1]]//go into winningArray and grab second item, here 1 from first line above
         const square3 = squares[winningArrays[y][2]] 
-        const square4 = sqaures[winningsArrays[y][3]]
+        const square4 = squares[winningArrays[y][3]]
 //check those squares to see if they all have the class of player-one
     if (
         square1.classList.contains('player-one') &&
@@ -104,7 +103,7 @@ function checkBoard() {
     }
 }
         for (let i = 0; i < squares.length; i++) { //for loop to get all squares on click
-    squares[i].onclick = () => {
+            squares[i].onclick = () => {
         //if the square below your current square is taken, you can go on top of it
         if (squares[i + 7].classList.contains('taken') &&!squares[i].classList.contains('taken')){ //current square plus 7 directly following, i.e. the entire row below && add player only if space is not currently taken
             if (currentPlayer == 1) {
@@ -119,7 +118,7 @@ function checkBoard() {
                 displayCurrentPlayer.innerHTML = currentPlayer
             }
         } else alert ('cannot go here')
-        checkBoard
+        checkBoard()
     } 
 
     }
